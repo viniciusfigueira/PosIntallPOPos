@@ -1,0 +1,32 @@
+##Primeiro envio git, criar um pasta local com o arquivo
+
+git init
+
+## Selecionar arquivo ou pasta completa
+git add arquivo OU git add.   -> O ponto representa a pasta toda
+
+## Fechar o "pacote" com o commit e comentario
+git commit -m "comentario sobre o commit"
+
+##Criar branch main
+git branch -M main
+
+##Selecionar o repositorio em que vai subir
+git remote and origin https:...
+
+##Enviar arquivos para o repositorio
+git push -u origin main
+
+
+
+## Atualizando o repositorio
+## Editar o arquivo, ou criar algum outro
+
+## Selecionar arquivo
+git add arquivo ou git add.
+
+## Fechar pacote com novo comentario
+git commit -m "atualizando arquivos"
+
+## Enviar arquivos para o repositório, não é necessario adicionar parâmetros por já existir a main
+git push origin main
