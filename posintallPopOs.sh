@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ## Removendo travas eventuais do apt ##
 
 sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
@@ -7,15 +6,19 @@ sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
 ##Instalando cURL
 apt install curl -y &&
 
+##Docker-CE
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &&
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" &&
+
 ##Vagrant
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - &&
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" &&
 
 ##Atualizando o sistema
 sudo apt update && sudo apt dist-upgrade
- 
+
 ##Instalando arquivos pelo APT
-sudo apt install wget python3 python-pip docker docker-compose git flatpak snapd ca-certificates curl gnupg lsb-release vim nautilus-admin virtualbox-qt htop vagrant -y &&
+sudo apt install wget python3 docker docker-compose git flatpak snapd ca-certificates curl gnupg lsb-release vim nautilus-admin virtualbox-qt htop vagrant -y &&
 
 ##Instalando pelo snap
 sudo snap install spotify &&
@@ -40,4 +43,9 @@ sudo mv ./kind /usr/local/bin/kind &&
 
 sudo apt update && sudo apt dist-upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y &&
 
+##Configurando Docker sem sudo
+sudo usermod -aG docker ${USER} &&
+echo "Coloque a senha para configurar usuario docker" &&
+su - ${USER} &&
 echo "Finalizado"
+
